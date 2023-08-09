@@ -32,7 +32,7 @@ app.use("/api/transaction", transactionRoutes);
 
 //6.1 conexion mongodb
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     //1.2 listen for requests
     app.listen(process.env.PORT, () => {
