@@ -1,6 +1,7 @@
 const {
   getTransactions,
-  getTransaction,
+  getTransactionsByEmail,
+  //getTransaction,
   createTransaction,
   deleteTransaction,
   updateTransaction,
@@ -12,7 +13,9 @@ const router = express.Router();
 // GET all expenses
 router.get("/", getTransactions);
 // GET a single expense
-router.get("/:id", getTransaction);
+//router.get("/:id", getTransaction);
+// GET all expense by email
+router.get("/:email", getTransactionsByEmail);
 // POST a new expense
 router.post("/", createTransaction);
 // DELETE a expense

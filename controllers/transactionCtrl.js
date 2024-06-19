@@ -11,7 +11,16 @@ const getTransactions = (req, res) => {
 // list one expense
 const getTransaction = (req, res) => {
   const { id } = req.params;
-  Transaction.findById(id)
+  Transaction.findById({ _id: id })
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(404).json({ message: err }));
+};
+
+// list one expense
+const getTransactionsByEmail = (req, res) => {
+  const { email } = req.params;
+  Transaction.find({ email: email })
+    .sort({ date: -1 })
     .then((data) => res.status(200).json(data))
     .catch((err) => res.status(404).json({ message: err }));
 };
@@ -92,7 +101,8 @@ const deleteTransaction = (req, res) => {
 
 module.exports = {
   getTransactions,
-  getTransaction,
+  //getTransaction,
+  getTransactionsByEmail,
   createTransaction,
   deleteTransaction,
   updateTransaction,
